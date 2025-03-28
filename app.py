@@ -1,4 +1,5 @@
 import pickle
+
 import numpy as np
 import pandas as pd
 from fastapi import FastAPI
@@ -10,6 +11,7 @@ with open("model.pkl", "rb") as file:
 
 # Initialiser FastAPI
 app = FastAPI()
+
 
 # Définir le format des données d'entrée
 class Transaction(BaseModel):
@@ -43,15 +45,18 @@ class Transaction(BaseModel):
     V28: float
     Amount: float
 
+
 # Route pour tester l'API
 @app.get("/")
 def home():
     return {"message": "API de Détection de Fraude opérationnelle !"}
 
+
 # Route pour prédire si une transaction est frauduleuse
 @app.post("/predict")
 def predict(transaction: Transaction):
-    data = np.array([[getattr(transaction, f"V{i}") for i in range(1, 29)] + [transaction.Amount]])
+    data = np.array(
+        [[getattr(transaction, f"V{i}") for i in range(1, 29)] + [transaction.Amount]]
+    )
     prediction = model.predict(data)[0]
     return {"fraudulent": bool(prediction)}
-
