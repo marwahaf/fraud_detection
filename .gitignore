@@ -16,3 +16,8 @@ env/
 **/venv 
 
 **/.env
+
+*.pyc
+*.pkl
+data/
+models/
