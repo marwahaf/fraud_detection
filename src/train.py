@@ -1,3 +1,6 @@
+import os
+import pickle
+
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
@@ -9,9 +12,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.utils import resample
 from xgboost import XGBClassifier
-import os
-import pickle
-
 
 # ---  Charger le dataset ---
 DATA_PATH = os.path.join("data", "creditcard.csv")
@@ -118,6 +118,7 @@ print(f"Taille du train : {X_train.shape}, Taille du test : {X_test.shape}")
 # Random Forest(bon compromis entre simplicité et performance)
 # XGBoost(souvent performant sur ce genre de problème)
 
+
 # M1 : Entraînement du modèle
 def Logisitic_Regression(X_train, X_test, y_train, y_test):
     log_reg = LogisticRegression()
@@ -130,6 +131,7 @@ def Logisitic_Regression(X_train, X_test, y_train, y_test):
     print("🔹 Régression Logistique 🔹")
     print(classification_report(y_test, y_pred_log))
     return log_reg
+
 
 # M2 : Entraînement du modèle
 def Random_Forest(X_train, X_test, y_train, y_test):
@@ -144,6 +146,7 @@ def Random_Forest(X_train, X_test, y_train, y_test):
     print(classification_report(y_test, y_pred_rfc))
     return rfc
 
+
 # M3 : Entraînement du modèle
 def XGBoost(X_train, X_test, y_train, y_test):
     xgb = XGBClassifier()
@@ -155,10 +158,11 @@ def XGBoost(X_train, X_test, y_train, y_test):
     # Évaluation
     print("🔹 XGBoost 🔹")
     print(classification_report(y_test, y_pred_xgb))
-    return xgb 
+    return xgb
+
 
 # Established that random forest is better here.
-log_reg =Logisitic_Regression(X_train, X_test, y_train, y_test)
+log_reg = Logisitic_Regression(X_train, X_test, y_train, y_test)
 rfc = Random_Forest(X_train, X_test, y_train, y_test)
 xgb = XGBoost(X_train, X_test, y_train, y_test)
 
