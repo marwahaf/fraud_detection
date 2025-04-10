@@ -2,12 +2,6 @@
 # Base image for Python 3.12
 FROM python:3.12-slim
 
-# # Optimisation ? to check later 
-# ENV PYTHONDONTWRITEBYTECODE=1
-# ENV PYTHONUNBUFFERED=1
-# ENV FLASK_APP=app.py
-
-
 # Set the working directory
 WORKDIR /app
 COPY requirements.txt .
