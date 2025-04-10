@@ -2,10 +2,13 @@ import os
 import pickle
 
 import pandas as pd
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request,send_from_directory
 
 app = Flask(__name__)
 
+@app.route("/")
+def home():
+    return send_from_directory(".", "static/index.html")
 
 if not os.path.exists("models/model.pkl") or not os.path.exists("models/scaler.pkl"):
     print("Veuillez d'abord exécuter train.py")

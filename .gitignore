@@ -18,6 +18,4 @@ env/
 **/.env
 
 *.pyc
-*.pkl
 data/
-models/
