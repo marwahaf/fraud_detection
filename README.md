@@ -50,6 +50,24 @@ python src/app.py
 docker build -t fraud-detection .
 docker run -p 8000:8000 fraud-detection
 ```
+## 🚀 Déploiement sur Render (Docker)
 
-### Notes
+### 📝 Mes notes perso :
+- **Lien de l'API** : `[https://fraud-detection.onrender.com](https://fraud-detection-vhwx.onrender.com/)`  
+- **Config Docker** : Le fichier `Dockerfile` présent dans le repo a fonctionné sans modif  
+- **Variables d'environnement** :  
+  - `PORT=8000` (doit matcher avec `app.py`)  
+- **Problèmes rencontrés** :  
+  - Le frontend plantait car j'avais oublié `CORS(app)` dans `app.py`  
+  - Premier déploiement lent (~8 min) car Render build l'image Docker  
+
+### 🔄 Commandes utiles :
+```bash
+# Redéployer après un changement :
+git push origin main  # Render rebuild automatiquement
+
+# Voir les logs en temps réel :
+1. Aller sur Render.com → Mon service → Onglet "Logs"
+```
+## Notes
 - The frontend interface was collaboratively developed with DEEPSICK.
